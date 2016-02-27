@@ -4,11 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test1": "echo its fun"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Justin England <justengland@gmail.com>",
+  "license": "MIT",
   "dependencies": {
-    "npm": "^1.4.28"
+    "npm": "^1.4.28",
+    "archiver": "^0.21.0",
+    "rimraf": "^2.5.2",
+    "unzip": "^0.1.11"
   }
 }

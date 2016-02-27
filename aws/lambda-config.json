@@ -1,0 +1,12 @@
+{
+  "FunctionName": "codedeploy-demo",
+  "CodeSize": 3647994,
+  "MemorySize": 128,
+  "FunctionArn": "arn:aws:lambda:us-west-2:123456789123:function:codedeploy-demo",
+  "Handler": "index.handler",
+  "Role": "arn:aws:iam::123456789123:role/lambda_basic_execution",
+  "Timeout": 59,
+  "LastModified": "2016-02-27T22:43:29.365+0000",
+  "Runtime": "nodejs",
+  "Description": ""
+}

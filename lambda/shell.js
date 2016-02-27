@@ -1,15 +1,40 @@
 var exec = require('child_process').exec;
 
 var BUILD_DIRECTORY = '/tmp/build';
-var NPM_COMMAND = 'sh ' + BUILD_DIRECTORY + '/node_modules/.bin/npm ';
+var NPM_SH_COMMAND = 'sh ' + BUILD_DIRECTORY + '/node_modules/.bin/npm ';
+var NPM_WINDOES_COMMAND = BUILD_DIRECTORY + '/node_modules/.bin/npm.exe ';
+var COMMAND_DELIMITER = ';';
 
-module.exports = callExec;
+var isWindows = /^win/.test(process.platform);
+var npmCommand = isWindows ? NPM_WINDOES_COMMAND : NPM_SH_COMMAND;
 
-function callExec(command, workingDirectory, onComplete) {
+module.exports = shell;
+
+function shell(command, workingDirectory, onComplete) {
+  console.log('--------- shell ------->', command);
+  var commands = command.indexOf(COMMAND_DELIMITER) > -1 ? command.split(COMMAND_DELIMITER)
+    : [ command ]
+
+  callCommands(commands, workingDirectory, onComplete);
+}
+
+function callCommands(commands, workingDirectory, onComplete) {
+  var command = commands.shift();
+  execute(command, workingDirectory, function() {
+    if(commands.length > 0) {
+      callCommands(commands, workingDirectory, onComplete)
+    }
+    else {
+      onComplete && onComplete();
+    }
+  });
+}
+
+function execute(command, workingDirectory, onComplete) {
   if (!command) throw 'Command is needed';
-  else console.log('call command:', command);
+  else console.log('--------- execute ------->', command);
 
-  var commandReplace = replaceNpm(command);
+  var commandReplace = isWindows ? command : replaceNpm(command);
 
   var options = workingDirectory ? {cwd: workingDirectory} : {};
   var child = exec(commandReplace, options, function (err, standardOut, standardError) {
@@ -23,5 +48,10 @@ function callExec(command, workingDirectory, onComplete) {
 
 // A little regex to replace the npm command with a bash statement
 function replaceNpm(source) {
-  return source.replace(/npm /g, NPM_COMMAND)
+  return source.replace(/npm /g, npmCommand)
 }
+
+
+//// Tests
+//shell('npm run test1', '.', function() { console.log('test finished') });
+//shell('npm install; npm run test1', '.', function() { console.log('test finished') });

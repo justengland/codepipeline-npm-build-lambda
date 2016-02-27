@@ -1,18 +1,17 @@
-var shell = require('./shell');
-var INSTALL_COMMAND = 'sh ./install.sh';
-var BUILD_DIRECTORY = '/tmp/build';
+
+var build = require('./build');
+var install = require('./install');
 
 exports.handler = function(event, context) {
   var command =  event.cmd || 'npm version';
   console.log('Run some NPM!!');
 
-  shell(INSTALL_COMMAND, '.', function(shErr){
-    console.log(INSTALL_COMMAND, 'finished:');
+  install(function() {
+    console.log('install finished:');
 
-    shell(command, BUILD_DIRECTORY, function (commandErr) {
-      console.log(command, 'finished:');
-      context.done();
-    });
+    var invokeId = context.invokeid;
+    build(event, invokeId, context.done);
+
   });
 };
 

@@ -15,5 +15,13 @@
   "bugs": {
     "url": "https://github.com/justengland/codepipeline-npm-build-lambda/issues"
   },
-  "homepage": "https://github.com/justengland/codepipeline-npm-build-lambda#readme"
+  "homepage": "https://github.com/justengland/codepipeline-npm-build-lambda#readme",
+  "devDependencies": {
+    "aws-sdk": "^2.2.39"
+  },
+  "dependencies": {
+    "archiver": "^0.21.0",
+    "rimraf": "^2.5.2",
+    "unzip": "^0.1.11"
+  }
 }
