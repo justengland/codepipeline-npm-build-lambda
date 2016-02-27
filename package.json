@@ -1,0 +1,19 @@
+{
+  "name": "codepipeline-npm-build-lambda",
+  "version": "1.0.0",
+  "description": "An AWS Lambda function used to integrate with codepipeline. This lambda function is designed to work with npm as the build tool.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/justengland/codepipeline-npm-build-lambda.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/justengland/codepipeline-npm-build-lambda/issues"
+  },
+  "homepage": "https://github.com/justengland/codepipeline-npm-build-lambda#readme"
+}
