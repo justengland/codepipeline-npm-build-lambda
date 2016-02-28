@@ -15,8 +15,26 @@ Since CodePipeline is a continuous delivery system once it is started it deploys
 This lambda is designed to [use npm as a build tool](http://blog.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/). By using npm as the build tool it provides a consistent interface that can underlie the technology beneath it. It is still possible to use other build tools like grunt, gulp or webpack, just use [npm scripts](https://docs.npmjs.com/misc/scripts) to wrap the underlying tool used beneath it. 
 
 ## Build Tool Integration
+```TODO, I need to build a publish helper```
+If you manally set stuff up within the roles will be setup when you create the AWS resources. I have included the details of the roles in the aws folder.
+
+#### Within AWS Lambda
+1. Create a new lambda, skip the template
+1. Give the lambda a name such as ```codepipleine-npm```
+1. Runtime should be node.js
+1. Run npm install on the ./lambda directory
+1. Zip up the ./lambda directory
+1. Upload the ./lambda directory
+
+#### Within CodePipeline 
+1. Create an action with a category of invoke
+1. Give the action a name, and set the provider to AWS Lambda
+1. Set the input argument artifact to the source that needs to be build, this can be an s3 bucket or github repository for example
+1. Set the ouput argument if you want to pass the build to another action, this will be the build folder
+<img src="https://raw.githubusercontent.com/justengland/codepipeline-npm-build-lambda/master/docs/action.png" width="200">
 ```TODO, I need to build a good sample project to reference```
+<img src="https://raw.githubusercontent.com/justengland/codepipeline-npm-build-lambda/master/docs/pipeline.png" width="200">
 
 ## Development instructions
 ```TODO, I need to build out the tools```
-<img src="https://raw.githubusercontent.com/justengland/codepipeline-npm-build-lambda/master/docs/action.png" width="300">
+
