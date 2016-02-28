@@ -19,3 +19,4 @@ This lambda is designed to [use npm as a build tool](http://blog.keithcirkel.co.
 
 ## Development instructions
 ```TODO, I need to build out the tools```
+<img src="https://raw.githubusercontent.com/justengland/codepipeline-npm-build-lambda/master/docs/action.png" width="300">
