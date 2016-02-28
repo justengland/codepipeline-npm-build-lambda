@@ -32,9 +32,12 @@ If you manally set stuff up within the roles will be setup when you create the A
 1. Set the input argument artifact to the source that needs to be build, this can be an s3 bucket or github repository for example
 1. Set the ouput argument if you want to pass the build to another action, this will be the build folder
 <img src="https://raw.githubusercontent.com/justengland/codepipeline-npm-build-lambda/master/docs/action.png" width="200">
-###### sample action setup
+
+##### sample action setup
+
 <img src="https://raw.githubusercontent.com/justengland/codepipeline-npm-build-lambda/master/docs/pipeline.png" width="200">
-###### sample pipeline setup
+
+##### sample pipeline setup
 
 ## Development instructions
 ```TODO: build out the deployment tools```
